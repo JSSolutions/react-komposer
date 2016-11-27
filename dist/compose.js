@@ -87,15 +87,18 @@ function compose(fn, L1, E1) {
         _this.getWrappedInstance = _this.getWrappedInstance.bind(_this);
 
         _this.state = {};
-
-        // XXX: In the server side environment, we need to
-        // stop the subscription right away. Otherwise, it's a starting
-        // point to huge subscription leak.
-        _this._subscribe(props, context);
-        return _this;
       }
 
       (0, _createClass3.default)(Container, [{
+        key: 'componentWillMount',
+        value: function componentWillMount() {
+
+          // XXX: In the server side environment, we need to
+          // stop the subscription right away. Otherwise, it's a starting
+          // point to huge subscription leak.
+          this._subscribe(props, context);
+        }
+      }, {
         key: 'componentDidMount',
         value: function componentDidMount() {
           this._mounted = true;
