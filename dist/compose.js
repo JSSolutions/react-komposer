@@ -96,7 +96,7 @@ function compose(fn, L1, E1) {
           // XXX: In the server side environment, we need to
           // stop the subscription right away. Otherwise, it's a starting
           // point to huge subscription leak.
-          this._subscribe(props, context);
+          this._subscribe(this.props, this.context);
         }
       }, {
         key: 'componentDidMount',
